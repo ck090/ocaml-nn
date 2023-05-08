@@ -30,3 +30,6 @@ _opam/
 
 #csv files
 data/*
+
+#notebook checkpoints
+*.ipynb_checkpoints
