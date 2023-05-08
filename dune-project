@@ -4,6 +4,6 @@
 (generate_opam_files true)
 
 (source (github ck090/ocaml-nn))
-(license ISC)
+(license MIT)
 (authors "Chandra Kanth Nagesh")
 (maintainers "chandrakanth.nagesh@colorado.edu")
