@@ -55,3 +55,6 @@ dune exec ./train.exe
 ```
 Run `dune clean`, to clean the `_build/` directory.
 
+
+## Tests
+
