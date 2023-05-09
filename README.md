@@ -46,9 +46,9 @@ There are two functions that can be called along with some utility functions tha
 
 The entire OCaml code base is parameterized. One can always change them to customize it.
 
-## Example
+## Example run
 
-Run the code in `train.ml` to train the NeuralNet model on MNIST-10 dataset. To run do the following, from inside the folder:
+Run the code in `train.ml` to train the NeuralNet model on a sample 100 rows MNIST-10 dataset. This is provided in the `data/` folder. To run do the following, from inside the folder:
 ```
 dune build
 dune exec ./train.exe
@@ -58,3 +58,21 @@ Run `dune clean`, to clean the `_build/` directory.
 
 ## Tests
 
+We run some sample tests on 4000 rows of the MNIST-10 dataset and test on 20 rows. The results are as follows:
+
+| Optimization  | Accuracy | Time (sec) |
+|---------------|----------|------------|
+| Vanilla GD    | 0.842    | 65         |
+| GD w/Momentum | 0.894    | 55         |
+| RMS Prop      | 0.910    | 60         |
+
+Here we needed to use `TanH` activation for `RMSProp` so that the gradients are updated. 
+
+We also compare the efficiency of using a better data structure to represent the vectors. Here we compare representing the data as OCaml `List` vs `Arrays`:
+
+| Data Structure  | Accuracy | Time (sec) |
+|-----------------|----------|------------|
+| Lists           | 0.842    | 260        |
+| Arrays          | 0.894    | 60         |
+
+We can see a 400% improvement in time just by changing the data structure. The original times were recorded in NB format, which gave us 180 and 780 seconds respectively.
