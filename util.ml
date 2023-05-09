@@ -2,7 +2,6 @@
 (*        Utility functions that we will be using in our main code        *)
 (*             The type is going to be 'a t = float list list             *)
 (**************************************************************************)
-
 type 'a t = float array array
 
 let shape (a: 'a t) = 

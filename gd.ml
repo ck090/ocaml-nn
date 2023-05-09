@@ -2,7 +2,6 @@
 (*                  OCaml implementation of Gradient Descent              *)
 (*                  1. Vanilla 2. Stochastic 3. Mini-Batch                *)
 (**************************************************************************)
-
 type algorithm_type = GD | SGD | MBGD
 
 let data (x : float array array) (y : float array array) (type_ : algorithm_type) : (float array array * float array array) = 

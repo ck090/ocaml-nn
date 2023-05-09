@@ -32,6 +32,7 @@ let () =
                       ~w2:w2
                       ~b2:b2
 
+
 (**************************************************************************)
 (*                      Train the NN on any data                          *)
 (* train_x: Training data will be read as a Float Array Array format      *)

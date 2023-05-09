@@ -30,7 +30,7 @@ There are two functions that can be called along with some utility functions tha
 - `optimizer:` optimizier type choose from `VGD | GDM | RMSProp`
 - `activation:` activation function choose from `TanH | ReLU | Sigmoid`
 - `beta1:` regularization parameter used in GD with Momentum and RMSProp
-- `beta2:` (1 - beta1) used for the same purpose
+- `beta2:` (1 - `beta1`) used for the same purpose
 - `hidden_units:` number of hidden units per hidden layer in the model
 - `epsilon:` small value used in RMSProp to avoid divide by zero errors
 

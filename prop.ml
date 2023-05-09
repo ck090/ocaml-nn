@@ -3,7 +3,6 @@
 (*            Also update params using Vanilla Gradient Descent           *)
 (*                   and Gradient Descent with Momentum                   *)
 (**************************************************************************)
-
 type 'a t = float array array
 
 let forward_prop (w1: 'a t) (b1: 'a t) (w2: 'a t) (b2: 'a t) (train_x: 'a t) (activate: Activation.type_) :
