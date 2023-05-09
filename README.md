@@ -32,6 +32,7 @@ There are two functions that can be called along with some utility functions tha
 - `beta1:` regularization parameter used in GD with Momentum and RMSProp
 - `beta2:` (1 - `beta1`) used for the same purpose
 - `hidden_units:` number of hidden units per hidden layer in the model
+- `output_units:` number of classes in the target label of the dataset
 - `epsilon:` small value used in RMSProp to avoid divide by zero errors
 
 `Neuralnet.inference` - Peforms predictions on the test data provided. The function has the following arguments:
