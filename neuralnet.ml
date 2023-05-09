@@ -19,15 +19,15 @@ module Monad : MONAD = struct
   let run x = x
 end
 
-let init_params (hidden_units : int) : 
+let init_params (hidden_units : int) (output_units : int) (n_features : int) : 
   ('a t * 'a t * 'a t * 'a t * 'a t * float * 'a t * float) =
-  let w1 = Util.float_2d hidden_units 784 in
+  let w1 = Util.float_2d hidden_units n_features in
   let b1 = Util.float_2d hidden_units 1 in
-  let v_w1 = Util.float_2d_zeros hidden_units 784 in
+  let v_w1 = Util.float_2d_zeros hidden_units n_features in
   let v_b1 = 0.0 in
-  let w2 = Util.float_2d 10 hidden_units in
-  let b2 = Util.float_2d 10 1 in
-  let v_w2 = Util.float_2d_zeros 10 hidden_units in
+  let w2 = Util.float_2d output_units hidden_units in
+  let b2 = Util.float_2d output_units 1 in
+  let v_w2 = Util.float_2d_zeros output_units hidden_units in
   let v_b2 = 0.0 in
   (w1, b1, w2, b2, v_w1, v_b1, v_w2, v_b2)
 
@@ -39,7 +39,7 @@ let optim_to_string (opt : optim) : string =
   | GDM -> "GDM"
   | RMSProp -> "RMSProp"
 
-let fit ~(train_x : 'a t) ~(train_y : 'a t) ~(lr : float) ~(iter : int) ~(gd_type : Gd.algorithm_type) ~(optimizer : optim) ~(activation : Activation.type_) ~(beta1 : float) ~(beta2 : float) ~(hidden_units : int) ~(epsilon : float) : ('a t * 'a t * 'a t * 'a t) Monad.t =
+let fit ~(train_x : 'a t) ~(train_y : 'a t) ~(lr : float) ~(iter : int) ~(gd_type : Gd.algorithm_type) ~(optimizer : optim) ~(activation : Activation.type_) ~(beta1 : float) ~(beta2 : float) ~(hidden_units : int) ~(output_units : int) ~(epsilon : float) : ('a t * 'a t * 'a t * 'a t) Monad.t =
   Printf.printf "\n\n-------Loaded dataset-------\n";
   Printf.printf "Train dataset\t: (%d, %d)\n" (fst (Util.shape train_x)) (snd (Util.shape train_x));
   Util.asrt((snd (Util.shape train_x)) = (snd (Util.shape train_y)), "Shape error in Training data...");
@@ -49,7 +49,7 @@ let fit ~(train_x : 'a t) ~(train_y : 'a t) ~(lr : float) ~(iter : int) ~(gd_typ
   Printf.printf "\n-------Training Model-------\n";
 
   let open Monad in
-  let w1, b1, w2, b2, v_w1, v_b1, v_w2, v_b2 = init_params hidden_units in
+  let w1, b1, w2, b2, v_w1, v_b1, v_w2, v_b2 = init_params hidden_units output_units (fst (Util.shape train_x)) in
   let rec batch_loop i w1 b1 w2 b2 v_w1 (v_b1: float) v_w2 (v_b2: float) iter train_x train_y (x, y) lr =
     if i = iter then return (w1, b1, w2, b2)
     else 
