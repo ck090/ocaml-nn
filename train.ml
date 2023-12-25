@@ -1,5 +1,4 @@
 (* Train the NN on any data *)
-include Util
 
 let () =
   (* Read in the train and test data *)

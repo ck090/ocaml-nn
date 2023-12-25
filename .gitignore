@@ -28,7 +28,6 @@ setup.log
 # Local OPAM switch
 _opam/
 
-
 #notebook checkpoints
 **/*.ipynb_checkpoints/
 

@@ -56,6 +56,7 @@ dune exec ./train.exe
 ```
 Run `dune clean`, to clean the `_build/` directory.
 
+Notice the usage of `(include_subdirs unqualified)` in the dune file which makes sure that all the sub-directories of the project are in the same directory.
 
 ## Tests
 
