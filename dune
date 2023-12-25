@@ -1,3 +1,4 @@
-(executable 
+(executable
   (name train)
   (libraries csv))
+(include_subdirs unqualified)

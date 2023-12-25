@@ -6,4 +6,4 @@
 (source (github ck090/ocaml-nn))
 (license MIT)
 (authors "Chandra Kanth Nagesh")
-(maintainers "chandrakanth.nagesh@colorado.edu")
+(maintainers "ckn@colorado.edu")

@@ -1,12 +1,13 @@
 (* Train the NN on any data *)
+include Util
 
 let () =
   (* Read in the train and test data *)
-  let train_x = Util.get_data "/Users/chandrakanthn/Desktop/CSCI_7000/Project/data/train_small.csv" in
-  let train_y = Util.get_labels "/Users/chandrakanthn/Desktop/CSCI_7000/Project/data/train_small_labels.csv" in
+  let train_x = Util.get_data "/Users/chandrakanthn/Desktop/Old Semesters/Spring23 Courses/CSCI_7000/ocaml-nn/data/train_small.csv" in
+  let train_y = Util.get_labels "/Users/chandrakanthn/Desktop/Old Semesters/Spring23 Courses/CSCI_7000/ocaml-nn/data/train_small_labels.csv" in
 
-  let test_x = Util.get_data "/Users/chandrakanthn/Desktop/CSCI_7000/Project/data/test_small.csv" in
-  let test_y = Util.get_labels "/Users/chandrakanthn/Desktop/CSCI_7000/Project/data/test_small_labels.csv" in
+  let test_x = Util.get_data "/Users/chandrakanthn/Desktop/Old Semesters/Spring23 Courses/CSCI_7000/ocaml-nn/data/test_small.csv" in
+  let test_y = Util.get_labels "/Users/chandrakanthn/Desktop/Old Semesters/Spring23 Courses/CSCI_7000/ocaml-nn/data/test_small_labels.csv" in
 
   (* Compute the gradients i.e. train the model *)
   let gradients = Neuralnet.fit ~train_x:train_x 
